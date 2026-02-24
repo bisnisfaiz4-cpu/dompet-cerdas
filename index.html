@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Dompet Cerdas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-left">
+            <div class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/214/214362.png" alt="Logo" width="30">
+                <span>Dompet Cerdas</span>
+            </div>
+            <h1>Kelola Keuangan dengan Mudah</h1>
+            <p>Dompet Cerdas membantu Anda mencatat setiap pemasukan dan pengeluaran dengan mudah, aman, dan terpercaya.</p>
+        </div>
+
+        <div class="login-right">
+            <div class="form-wrapper">
+                <h2>Selamat Datang Kembali 👋</h2>
+                <p class="subtitle">Silakan masukkan detail akun Anda.</p>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="admin@test.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#">Lupa Password?</a>
+                    </div>
+                    <button type="submit" id="loginBtn" class="btn-primary">Masuk Dashboard</button>
+                    <p class="error-msg" id="errorMsg"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

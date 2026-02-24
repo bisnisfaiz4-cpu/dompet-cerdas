@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Dompet Cerdas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/214/214362.png" alt="Logo" width="24">
+            <h2>Dompet Cerdas</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">Dashboard</a>
+            <a href="#" class="nav-item">Transaksi</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="nav-item text-danger">Keluar</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Dashboard <span class="badge">✔</span></h1>
+                <p>Pantau arus kas harianmu di sini.</p>
+            </div>
+            <div class="user-profile">
+                <span id="userEmail">Loading...</span>
+                <div class="avatar">A</div>
+            </div>
+        </header>
+
+        <div class="filter-section">
+            <button class="btn-filter active">Hari Ini</button>
+            <button class="btn-filter">Minggu Ini</button>
+            <button class="btn-filter">Bulan Ini</button>
+            <button class="btn-filter">Custom</button>
+        </div>
+
+        <div class="cards-grid">
+            <div class="summary-card bg-green">
+                <h3>Total Omset</h3>
+                <h2 id="cardOmset">Rp 0</h2>
+            </div>
+            <div class="summary-card bg-teal">
+                <h3>Total Modal</h3>
+                <h2 id="cardModal">Rp 0</h2>
+            </div>
+            <div class="summary-card bg-blue">
+                <h3>Total Laba</h3>
+                <h2 id="cardLaba">Rp 0</h2>
+            </div>
+            <div class="summary-card bg-red">
+                <h3>Total Cashback</h3>
+                <h2 id="cardCashback">Rp 0</h2>
+            </div>
+        </div>
+        
+        <div class="transaksi-header">
+            <h2>Transaksi Terbaru</h2>
+            <button id="btnTambahTransaksi" class="btn-primary">+ Tambah Transaksi</button>
+        </div>
+
+        <div class="table-container" style="margin-bottom: 30px;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Jenis</th>
+                        <th>Nama</th>
+                        <th>Nomor/Akun</th>
+                        <th>Omset</th>
+                        <th>Laba</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelTransaksi">
+                    <tr>
+                        <td colspan="7" style="text-align: center;">Memuat data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="modalTransaksi" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Tambah Transaksi</h2>
+                    <span class="close-modal">&times;</span>
+                </div>
+                
+                <form id="formTambahTransaksi">
+                    <div class="input-group">
+                        <label for="jenisTransaksi">Jenis Transaksi</label>
+                        <label for="tanggalInput">Tanggal Transaksi</label>
+                        <input type="date" id="tanggalInput" required>
+                        <select id="jenisTransaksi" required>
+                            <option value="" disabled selected>Pilih Jenis...</option>
+                            <option value="Top Up">Top Up</option>
+                            <option value="Pulsa">Pulsa</option>
+                            <option value="Kuota">Kuota</option>
+                            <option value="Token Listrik">Token Listrik</option>
+                            <option value="Tagihan Listrik">Tagihan Listrik</option>
+                            <option value="Freelance">Freelance</option>
+                        </select>
+                    </div>
+
+                    <div id="fieldFreelance" style="display: none; background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                        <div class="input-group">
+                            <label for="subJenis">Kategori / Platform</label>
+                            <select id="subJenis">
+                                <option value="ShopeePay">ShopeePay</option>
+                                <option value="Shopee">Shopee</option>
+                                <option value="GoPay">GoPay</option>
+                                <option value="Dana">Dana</option>
+                                <option value="TikTok Shop">TikTok Shop</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="passwordAkun">Password Akun (Opsional)</label>
+                            <input type="password" id="passwordAkun" placeholder="Masukkan jika perlu">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="namaPembeli">Nama Pembeli</label>
+                        <input type="text" id="namaPembeli" placeholder="Contoh: Budi" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="nomorAkun">Nomor HP / Akun</label>
+                        <input type="text" id="nomorAkun" placeholder="08123456789" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="keterangan">Keterangan / Item</label>
+                        <input type="text" id="keterangan" placeholder="Contoh: Pulsa Telkomsel 50rb" required>
+                    </div>
+
+                    <div class="grid-2-col">
+                        <div class="input-group">
+                            <label for="hargaAwal">Harga Jual / Omset (Rp)</label>
+                            <input type="number" id="hargaAwal" value="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="modal">Modal (Rp)</label>
+                            <input type="number" id="modal" value="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="diskon">Diskon (Rp)</label>
+                            <input type="number" id="diskon" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="cashback">Cashback Agen (Rp)</label>
+                            <input type="number" id="cashback" value="0">
+                        </div>
+                    </div>
+
+                    <div class="input-group bg-green-light">
+                        <label for="laba" style="color: #047857; font-weight: bold;">Laba Otomatis (Rp)</label>
+                        <input type="number" id="laba" value="0" readonly style="background-color: transparent; border: none; font-size: 1.2rem; color: #047857; font-weight: bold; pointer-events: none;">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary btn-cancel">Batal</button>
+                        <button type="submit" class="btn-primary" id="btnSimpan">Simpan Transaksi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
